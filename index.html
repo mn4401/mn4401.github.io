@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    My Website
+  </title>
+  <link rel="stylesheet" type="text/css" href="./styles/main.css">
+  <script>
+    const showImage = (id, imageUrl) => {
+      const image = new Image();
+      image.src = imageUrl;
+      image.onload = function () {
+        const imageHTML = `
+        <div class="image-container-1">
+          <div 
+            class="image-container-2" 
+            style="background-image: url('${imageUrl}'); padding-bottom: ${(100 * this.height) / this.width}%;">
+          <div>
+        </div>
+      `
+        document.getElementById(id).innerHTML = imageHTML;
+      };
+    }
+  </script>
+</head>
+
+<body>
+  <div class="header-container">
+    <div id="header-logo"></div>
+    <script>
+      showImage("header-logo", "./images/logo.svg")
+    </script>
+    <div id="header-items"></div>
+    <div id="child-header-items"></div>
+  </div>
+  <div id="content-container">
+    <iframe class="iframe-content" style="height: 2000px" src="./pages/about_me.html"></iframe>
+  </div>
+  <div id="footer-container">
+    <div id="footer-background">
+      <script>
+        showImage("footer-background", "./images/footer-background.svg")
+      </script>
+    </div>
+
+    <div class="footer-items-container">
+      <div id="footer-items">
+      </div>
+    </div>
+  </div>
+</body>
+
+<script>
+  let headers = [
+    {
+      id: 1,
+      selected: true,
+      name: 'About me',
+      page: './pages/about_me.html',
+      background: './images/header_cloud.svg',
+      pageSize: 2000,
+    },
+    {
+      id: 2,
+      selected: false,
+      name: 'Portfolio',
+      page: './pages/portfolio.html',
+      background: './images/header_cloud.svg',
+      childPages: [
+        {
+          id: 1,
+          selected: true,
+          name: 'Motion Graphic',
+          page: './pages/child-pages/motion_graphic.html',
+          background: './images/child-header-cloud.svg',
+          pageSize: 2000
+        },
+        {
+          id: 2,
+          selected: false,
+          name: 'Graphic design',
+          page: './pages/child-pages/graphic_design.html',
+          background: './images/child-header-cloud.svg',
+          pageSize: 2000
+        },
+        {
+          id: 3,
+          selected: false,
+          name: 'Photography',
+          page: './pages/child-pages/photography.html',
+          background: './images/child-header-cloud.svg',
+          pageSize: 2000
+        },
+        {
+          id: 4,
+          selected: false,
+          name: 'Illustration',
+          page: './pages/child-pages/illustration.html',
+          background: './images/child-header-cloud.svg',
+          pageSize: 2000
+        },
+      ]
+    },
+    {
+      id: 3,
+      selected: false,
+      name: 'My story',
+      page: './pages/my_story.html',
+      background: './images/header_cloud.svg',
+      pageSize: 1500,
+    },
+    {
+      id: 4,
+      selected: false,
+      name: 'My music',
+      page: './pages/my_music.html',
+      background: './images/header_cloud.svg',
+      pageSize: 2000,
+    },
+    {
+      id: 5,
+      selected: false,
+      name: 'Contact',
+      page: './pages/contact.html',
+      background: './images/header_cloud.svg',
+      pageSize: 2000,
+    },
+  ];
+
+  let currentChildHeaders = [];
+
+  const onChangePage = (headerItemId) => {
+    headers = headers.map(header => {
+      if (header.id === headerItemId) {
+        header.selected = true;
+        if(header.childPages && header.childPages.length > 0) {
+          currentChildHeaders = header.childPages;
+          renderChildHeader();
+          header.childPages[0].selected = true;
+          document.getElementById("content-container").innerHTML = `<iframe class="iframe-content" style="height: ${header.childPages[0].pageSize}px" src="${header.childPages[0].page}"></iframe>`;
+          return header;
+        } else {
+          removeChildHeader();
+        }
+
+        document.getElementById("content-container").innerHTML = `<iframe class="iframe-content" style="height: ${header.pageSize}px" src="${header.page}"></iframe>`;
+        return header;
+      }
+      header.selected = false;
+      return header;
+    })
+    renderHeader();
+  }
+
+  const onChangeChildPage = (headerItemId) => {
+    currentChildHeaders = currentChildHeaders.map(header => {
+      if (header.id === headerItemId) {
+        header.selected = true;
+        document.getElementById("content-container").innerHTML = `<iframe class="iframe-content" style="height: ${header.pageSize}px" src="${header.page}"></iframe>`;
+        return header;
+      }
+      header.selected = false;
+      return header;
+    })
+    renderChildHeader();
+  }
+</script>
+
+<script>
+  const renderHeader = () => {
+    let headersHTML = "";
+    headers.map(header => {
+      headersHTML += `
+          <div 
+            onclick="onChangePage(${header.id})"
+            class="header-item"
+            style="background-image: url('${header.background}');background-color:${header.selected ? "#4F8BC0" : "white"};color:${header.selected ? "white" : "black"}"
+          >
+            ${header.name}
+          </div>
+        `
+    })
+
+    document.getElementById("header-items").innerHTML = headersHTML;
+  }
+</script>
+
+<script>
+  const renderChildHeader = () => {
+    let headersHTML = "";
+    currentChildHeaders.map(header => {
+      headersHTML += `
+          <div 
+            onclick="onChangeChildPage(${header.id})"
+            class="child-header-item"
+            style="background-image: url('${header.background}');background-color:${header.selected ? "white" : "#F2CA60"};color:${header.selected ? "red" : "black"}"
+          >
+            ${header.name}
+          </div>
+        `
+    })
+
+    document.getElementById("child-header-items").innerHTML = headersHTML;
+  }
+</script>
+
+<script>
+  const removeChildHeader = () => {
+    document.getElementById("child-header-items").innerHTML = "";
+  }
+</script>
+
+<script>
+  renderHeader()
+</script>
+
+<script>
+  const footerIcons = [
+    {
+      id: 1,
+      name: 'email',
+      image: './images/email-icon.svg',
+      link: "https://www.facebook.com/"
+    },
+    {
+      id: 2,
+      name: 'be',
+      image: './images/be-icon.svg',
+      link: "https://www.facebook.com/"
+    },
+    {
+      id: 3,
+      name: 'call',
+      image: './images/call-icon.svg',
+      link: "https://www.facebook.com/"
+    },
+    {
+      id: 4,
+      name: 'facebook',
+      image: './images/fb-icon.svg',
+      link: "https://www.facebook.com/"
+    },
+  ]
+
+  let footerItemsHTML = ""
+  footerIcons.map(icon => {
+    footerItemsHTML += `<a href="${icon.link}" target="_blank"><div class="footer-item" style="background-image: url('${icon.image}');"></div></a>`
+  });
+
+  document.getElementById("footer-items").innerHTML = footerItemsHTML;
+
+</script>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<header>
+	
+	<script>
+		const showImage = (id, imageUrl) => {
+			const image = new Image();
+			image.src = imageUrl;
+			image.onload = function () {
+				const imageHTML = `
+						<div class="image-container-1">
+							<div 
+								class="image-container-2" 
+								style="background-image: url('${imageUrl}'); padding-bottom: ${(100 * this.height) / this.width}%;">
+							<div>
+						</div>
+					`
+				document.getElementById(id).innerHTML = imageHTML;
+			};
+		}
+	</script>
+	<link rel="stylesheet" type="text/css" href="../styles/main.css">
+	
+</header>
+
+<body>
+	<div class="contact">
+	
+		<div class="contact-image">
+			
+			<img src="../images/contact-02.svg">
+		</div>
+	</div>
+		 
+
+
+
+
+</body>

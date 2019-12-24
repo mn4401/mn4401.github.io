@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<header>
+	
+	<script>
+		const showImage = (id, imageUrl) => {
+			const image = new Image();
+			image.src = imageUrl;
+			image.onload = function () {
+				const imageHTML = `
+						<div class="image-container-1">
+							<div 
+								class="image-container-2" 
+								style="background-image: url('${imageUrl}'); padding-bottom: ${(100 * this.height) / this.width}%;">
+							<div>
+						</div>
+					`
+				document.getElementById(id).innerHTML = imageHTML;
+			};
+		}
+	</script>
+	<link rel="stylesheet" type="text/css" href="../styles/main.css">
+	
+</header>
+<body>
+	<div class="about-me">	
+</div>
+	
+  <div class="about-me-cloud1">
+	  <img src="../images/about-me-cloud-1-02.svg">
+</div>
+	
+	<div class="about-me-cloud2">
+	  <img src="../images/about-me-cloud-2-02.svg">
+</div>
+	
+	<div class="about-me-cloud3">
+	  <img src="../images/about-me-cloud-3-02.svg">
+</div>
+		
+	<div class="about-me-cloud4">
+	  <img src="../images/about-me-cloud-4-02.svg">
+	
+</div>
+
+
+</body>

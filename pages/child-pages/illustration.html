@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<header>
+	<script>
+		const showImage = (id, imageUrl) => {
+			const image = new Image();
+			image.src = imageUrl;
+			image.onload = function () {
+				const imageHTML = `
+						<div class="image-container-1">
+							<div 
+								class="image-container-2" 
+								style="background-image: url('${imageUrl}'); padding-bottom: ${(100 * this.height) / this.width}%;">
+							<div>
+						</div>
+					`
+				document.getElementById(id).innerHTML = imageHTML;
+			};
+		}
+	</script>
+	<link rel="stylesheet" type="text/css" href="../../styles/main.css">
+</header>
+<body>
+
+	<div class="motion-graphic">
+	
+		<div class="motion-graphic-container1">
+		
+			<div class="motion-graphic-content"> 
+			<p><h3>Teacher and Branding</h3></p>
+			<img src="../../images/illustration1-01.jpg">
+			
+			</div>
+		
+		</div>
+	
+		<div class="space"></div>
+	
+		<div class="motion-graphic-container2">
+			
+			
+		<img src="../../images/illustration2-01.jpg">
+			
+	
+	</div>
+
+
+</body>

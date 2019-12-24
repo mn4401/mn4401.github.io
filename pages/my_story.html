@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<header>
+	<script>
+		const showImage = (id, imageUrl) => {
+			const image = new Image();
+			image.src = imageUrl;
+			image.onload = function () {
+				const imageHTML = `
+						<div class="image-container-1">
+							<div 
+								class="image-container-2" 
+								style="background-image: url('${imageUrl}'); padding-bottom: ${(100 * this.height) / this.width}%;">
+							<div>
+						</div>
+					`
+				document.getElementById(id).innerHTML = imageHTML;
+			};
+		}
+	</script>
+	<link rel="stylesheet" type="text/css" href="../styles/main.css">
+</header>
+
+<body>
+	<div class="my-story">
+			
+			<div class="my-story-container1">
+			
+				<div class="story-teller">
+				
+					<img src="../images/storycloud-01.svg">
+				
+				</div>
+			
+			</div>
+		
+			<div class="my-story-container2">
+		
+				<div class="my-story-image-container">
+				
+					<div class="my-story-image">
+							
+						<img src="../images/my_story1-01.jpg">	
+					
+					</div>
+					
+					<div class="my-story-content">
+						<p><h3>Meh:</h3></p>
+					
+						<p>I cried 2 days in a row.<br></p>
+						<p>Was feeling weak & got to hate myself all over again. <br></p>
+						<p>Now im dead sick, my body is sore, my head keeps spinning. I guess sometime being alone insuch days make me treasure what i had before. <br></p>
+					
+					</div>
+				
+				</div>
+				
+				<div class="my-story-image-container">
+				
+					<div class="my-story-image">
+							
+						<img src="../images/my_story2-01.jpg">	
+					
+					</div>
+					
+					<div class="my-story-content">
+						
+						<p><h3>IT'S SIMPLE</h3></p>
+					
+						<p>Since then, I hated & did’nt believe in what’s called “love”. <br>
+						But I still got into dates because for me, there’s no reason fot the past to let you down. <br>
+						I wasn’t sure, i didnt feel much when i got on the third, the forth... the tenth date with him? <br>
+						I was afraid i forced myself too much to “feel” it again & if i was giving hope to someone who i am not interested in, i am scared of hurting people. Then I assumed he wasn’t my type because if he was, i would click after a few conversation like those i’d met before. I told him so. <br></p>
+						<p>But in the face that he’s so genuine, kind & has high moral values kept me holding onto him, made me beleive that i would fall in love with him some day. <br></p>
+						<p>And I did. <br></p>
+					</div>
+				
+				</div>
+				
+				</div>
+		
+		</div>
+			
+		
+		</div>
+	
+
+	
+	
+</body>

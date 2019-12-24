@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<header>
+	<script>
+		const showImage = (id, imageUrl) => {
+			const image = new Image();
+			image.src = imageUrl;
+			image.onload = function () {
+				const imageHTML = `
+						<div class="image-container-1">
+							<div 
+								class="image-container-2" 
+								style="background-image: url('${imageUrl}'); padding-bottom: ${(100 * this.height) / this.width}%;">
+							<div>
+						</div>
+					`
+				document.getElementById(id).innerHTML = imageHTML;
+			};
+		}
+	</script>
+	<link rel="stylesheet" type="text/css" href="../styles/main.css">
+	
+</header>
+
+<body>
+	
+	<div class="my-music">
+	
+		<div class="my-music-container1">
+			
+			<div class="no-music-no-life">
+			
+				<img src="../images/musiccloud-02.svg">
+			</div>		
+		</div>
+		
+		<div class="my-music-container2">
+		
+			<div class="my-music-image-container">
+			
+				<div class="my-music-image">
+						
+					<img src="../images/my_music1-01.jpg">
+				</div>
+				
+				<div class="my-music-content">
+					<p><a href="https://www.youtube.com/watch?v=3Waf1Gy9d90" target="_blank"><h3>Nhat ki cua me</h3></a></p>
+					</div>
+			</div>	
+		
+			
+			<div class="my-music-image-container">
+			
+				<div class="my-music-image">
+						
+					<img src="../images/my_music2-01.jpg">
+				</div>
+				
+				<div class="my-music-content">
+				<p><a href="https://www.youtube.com/watch?v=xk9kwH3088g" target="_blank"><h3>Mash up Di hoc - Loi co</h3></a></p>
+					
+					</div>
+			</div>
+		
+			<div class="my-music-image-container">
+			
+				<div class="my-music-image">
+						
+					<img src="../images/my_music3-01.jpg">
+				</div>
+				
+				<div class="my-music-content">
+				<p><a href="https://www.youtube.com/watch?v=99Yz8TfUaOg" target="_blank"><h3>Cho vui - ukulele</h3></a></p>
+					
+					</div>
+			</div>
+			
+			<div class="my-music-image-container">
+			
+				<div class="my-music-image">
+						
+					<img src="../images/my_music4-01.jpg">
+				</div>
+				
+				<div class="my-music-content">
+				<p><a href="https://www.youtube.com/watch?v=ZR7ataVuoO8" target="_blank"><h3>Voi con ba la mai mai</h3></a></p>
+					
+					</div>
+			</div>
+			
+		
+
+		</div>
+	
+	
+	
+	
+	
+	</div>
+
+</body>
